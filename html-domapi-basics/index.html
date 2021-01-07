@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Vue for beginners</title>
+  <style>
+    body {
+      height: 100vh;
+      display: grid;
+      place-items: center;
+    }
+  </style>
+</head>
+
+<body>
+  <p>
+    <input placeholder="Enter your name">
+    <button onclick="sendName()">Send</button>
+  </p>
+  <script>
+    function sendName() {
+      const name = document.querySelector('input').value;
+      alert(`Hello ${name}!`);
+    }
+  </script>
+</body>
+
+</html>
