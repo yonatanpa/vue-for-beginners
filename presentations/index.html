@@ -1,40 +1,137 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
 
-		<title>reveal.js</title>
+    <title>reveal.js</title>
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css" id="theme">
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/moon.css" id="theme" />
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+    <!-- Theme used for syntax highlighted code -->
+    <link
+      rel="stylesheet"
+      href="plugin/highlight/monokai.css"
+      id="highlight-theme"
+    />
+    <style>
+      .drop-shadow {
+        filter: drop-shadow(0 0 8px darkgreen);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h1 class="drop-shadow">Vue for beginners</h1>
+          <h6>Session 1 - The Basics</h6>
+          <p>(HTML, DOM API, CSS)</p>
+        </section>
+        <section>
+          <h3>HTML Page</h3>
+          <pre><code data-trim>
+						&lt;html&gt;
+							<header>
+								<title>My Title</title>
+							</header>
+							&lt;body&gt;
+								<header>Header</header>
+								<main>Content</main>
+								<footer>Footer</footer>
+							&lt;/body&gt;
+						&lt;/html&gt;
+						</code></pre>
+        </section>
+        <section>
+          <h3>Request Flow</h3>
+          <img src="images/html-flow-chart.png" />
+        </section>
+        <section>
+          <h3>Basic common tags</h3>
+          <pre><code data-trim data-line-numbers="1|2-3|4">
+						<div>Block content</div>
+						<span>Inline content</span>
+						<span>Inline content 2</span>
+						<p>Paragraph</p>
+						</code></pre>
+          <div>Block content</div>
+          <span>Inline content</span>
+          <span>Inline content 2</span>
+          <p>Paragraph</p>
+        </section>
+        <section>
+          <h3>Basic common tags</h3>
+          <pre><code data-trim data-line-numbers="1|2-5|6-9">
+							<h6>Header size 6</h6>
+							<ul>
+								<li>unordered list item 1</li>
+								<li>unordered list item 2</li>
+							</ul>
+							<ol>
+								<li>ordered list item 1</li>
+								<li>ordered list item 2</li>
+							</ol>
+						</code></pre>
+          <h6>Header size 6</h6>
+          <ul>
+            <li>unordered list item 1</li>
+            <li>unordered list item 2</li>
+          </ul>
+          <ol>
+            <li>ordered list item 1</li>
+            <li>ordered list item 2</li>
+          </ol>
+        </section>
+        <section>
+          <h3>Live editable style</h3>
+          <style
+            id="editable-style"
+            contenteditable="true"
+            style="display: block"
+          >
+            #editable-style {
+              color: green;
+              font-size: 0.8em;
+            }
+          </style>
+        </section>
+        <section>
+          <h3>DOM API</h3>
+          <pre><code data-trim data-line-numbers="1|2-3">
+						const container = document.querySelector('#someId');
+						// These methods can be called on any DOM elements
+						const containerChild = container.querySelectorAll('.some-class');
+					</code></pre>
+        </section>
+        <section>
+          <h3>Listening to events</h3>
+          <pre><code data-trim data-line-numbers="1">
+						document.addEventListener('click', () => console.log('clicked'));
+					</code></pre>
+        </section>
+      </div>
+    </div>
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+        slideNumber: 'c/t',
 
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
-
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+  </body>
 </html>
