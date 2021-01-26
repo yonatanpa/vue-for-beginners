@@ -40,7 +40,7 @@
 							<header>
 								<title>My Title</title>
 								<link rel="stylesheet" href="path/to/main.css" />
-								<style>inline css</style>
+								<style>.inline-css {}</style>
 							</header>
 							&lt;body&gt;
 								<header>Header</header>
@@ -105,7 +105,7 @@
           </style>
         </section>
         <section>
-          <h3>DOM API</h3>
+          <h3>DOM API - Query Selector</h3>
           <pre><code data-trim data-line-numbers="1|2-3">
 						const container = document.querySelector('#someId');
 						// These methods can be called on any DOM elements
@@ -113,10 +113,27 @@
 					</code></pre>
         </section>
         <section>
-          <h3>Listening to events</h3>
+          <h3>DOM API - Create & Append</h3>
+          <pre><code data-trim data-line-numbers="1|2|3|4">
+						const tasklist = document.createElement('ul');
+						const listItem = document.createElement('li');
+						listItem.textContent = 'List item text';
+						tasklist.appendChild(listItem);
+					</code></pre>
+        </section>
+        <section>
+          <h3>DOM API - Listening to events</h3>
           <pre><code data-trim data-line-numbers="1">
 						document.addEventListener('click', () => console.log('clicked'));
 					</code></pre>
+        </section>
+        <section>
+          <h3>Let's build a simple Todo List</h3>
+          <ol>
+            <li>Show a list of tasks</li>
+            <li>Allow adding a task</li>
+            <li>Check a task to archive it</li>
+          </ol>
         </section>
       </div>
     </div>
