@@ -93,6 +93,12 @@
         </section>
         <section>
           <h3>Live editable style</h3>
+          <div style="font-size: medium; margin-bottom: 15px">
+            Normally, style elements have display: none; by the user agent
+            <br />
+            But we can force them to be visible by setting them to display:
+            block
+          </div>
           <style
             id="editable-style"
             contenteditable="true"
@@ -101,6 +107,7 @@
             #editable-style {
               color: green;
               font-size: 0.8em;
+              transform: rotate(-3deg);
             }
           </style>
         </section>
