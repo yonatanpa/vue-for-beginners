@@ -9,6 +9,7 @@
 
     <title>Vue for beginners</title>
 
+    <link rel="stylesheet" href="css/rainbow.css" />
     <link rel="stylesheet" href="dist/reset.css" />
     <link rel="stylesheet" href="dist/reveal.css" />
     <link rel="stylesheet" href="dist/theme/moon.css" id="theme" />
@@ -327,6 +328,26 @@
             <li>Stylesheets</li>
             <li>DOM api</li>
           </ul>
+        </section>
+        <section>
+          <div class="rainbow">
+            <svg viewBox="0 0 1400 300" style="width: 100%">
+              <!-- Symbol -->
+              <symbol id="s-text">
+                <text text-anchor="middle" x="50%" y="50%" dy=".35em">
+                  Question Time!
+                </text>
+              </symbol>
+
+              <!-- Duplicate symbols -->
+              <use xlink:href="#s-text" class="text"></use>
+              <use xlink:href="#s-text" class="text"></use>
+              <use xlink:href="#s-text" class="text"></use>
+              <use xlink:href="#s-text" class="text"></use>
+              <use xlink:href="#s-text" class="text"></use>
+            </svg>
+          </div>
+          <img src="images/patrick.gif" />
         </section>
       </div>
     </div>
