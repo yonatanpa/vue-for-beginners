@@ -29,6 +29,26 @@
         opacity: 0.7;
         font-size: 0.7em;
       }
+
+      note {
+        position: fixed;
+        top: 0;
+        left: 0;
+        font-size: 0.5em;
+        background: white;
+        padding: 10px;
+        background-color: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(6px);
+      }
+
+      .js-ex-help-list {
+        font-size: 0.7em;
+        list-style-type: none;
+      }
+
+      .js-ex-help-list > li {
+        margin-top: 0.5em;
+      }
     </style>
   </head>
   <body>
@@ -51,7 +71,9 @@
           </ul>
         </section>
         <section>
+          <note>HTML</note>
           <h3>HTML Page</h3>
+          <div class="subtitle">HTML is a tree</div>
           <pre><code data-trim>
 						&lt;html&gt;
 							<header>
@@ -73,6 +95,7 @@
           <img src="images/html-flow-chart.png" />
         </section>
         <section>
+          <note>HTML</note>
           <h3>Basic common tags</h3>
           <pre><code data-trim data-line-numbers="1|2-3|4|5|6">
 						<div>Block content</div>
@@ -93,6 +116,7 @@
           />
         </section>
         <section>
+          <note>HTML</note>
           <h3>Basic common tags</h3>
           <pre><code data-trim data-line-numbers="1|2-5|6-9">
 							<h6>Header size 6</h6>
@@ -116,6 +140,7 @@
           </ol>
         </section>
         <section>
+          <note>HTML</note>
           <h3>HTML Attributes</h3>
           <pre><code data-trim data-line-numbers="1|2-4">
             <tag attribute="value"></tag>
@@ -129,10 +154,12 @@
           </div>
         </section>
         <section>
+          <note>HTML</note>
           <h3>HTML Form</h3>
           <pre><code data-trim data-line-numbers>
             <form onsubmit="alert('Form saved!')">
               <label for="age">Age:</label>
+              <!-- input is childless tag can be self closed -->
               <input
                 id="age"
                 name="age"
@@ -189,9 +216,19 @@
               the id "todolist"
             </li>
           </ol>
-          <img src="images/todolist-ugly.PNG" />
+          <div style="display: flex">
+            <pre><code style="padding: 0" data-trim>
+              <input id="someId" />
+              <button>some button text</button>
+              <ul id="listId">
+                <li>list item 1</li>
+              </ul>
+              </code></pre>
+            <img style="margin: 0" src="images/todolist-ugly.PNG" />
+          </div>
         </section>
         <section>
+          <note>CSS</note>
           <h3>Add styles to HTML (CSS)</h3>
           <pre><code data-trim data-line-numbers="1-5|6">
             <style>
@@ -204,26 +241,7 @@
           <span class="subtitle">Added to the &lt;head&gt; tag</span>
         </section>
         <section>
-          <h3>Add a style to Exercise 1</h3>
-          <div class="subtitle">
-            add the following stylesheet to your html file:
-          </div>
-          <pre><code data-trim>
-            &lt;link rel="stylesheet" href="https://cdn.rawgit.com/kimeiga/bahunya/css/bahunya-0.1.3.css" /&gt;
-					</code></pre>
-        </section>
-        <section>
-          <h3>Add interactivity to HTML (JS)</h3>
-          <pre><code data-trim data-line-numbers="1-4|5">
-            <script>
-              // some inline Javascript code
-              const myVar = 5;
-            </script>
-            <script src="index.js"></script>
-						</code></pre>
-          <span class="subtitle">Added to the end of the &lt;body&gt; tag</span>
-        </section>
-        <section>
+          <note>CSS</note>
           <h3>CSS Selectors</h3>
           <pre><code data-trim data-line-numbers="1-4|6-9">
             /* class selector */
@@ -238,6 +256,29 @@
 					</code></pre>
         </section>
         <section>
+          <note>CSS</note>
+          <h3>Add a style to Exercise 1</h3>
+          <div class="subtitle">
+            add the following stylesheet to your html file:
+          </div>
+          <pre><code data-trim>
+            &lt;link rel="stylesheet" href="https://cdn.rawgit.com/kimeiga/bahunya/css/bahunya-0.1.3.css" /&gt;
+					</code></pre>
+        </section>
+        <section>
+          <note>Javascript</note>
+          <h3>Add interactivity to HTML (JS)</h3>
+          <pre><code data-trim data-line-numbers="1-4|5">
+            <script>
+              // some inline Javascript code
+              const myVar = 5;
+            </script>
+            <script src="index.js"></script>
+						</code></pre>
+          <span class="subtitle">Added to the end of the &lt;body&gt; tag</span>
+        </section>
+        <section>
+          <note>Javascript</note>
           <h3>DOM API - Query Selector</h3>
           <pre><code data-trim data-line-numbers="1|2-3">
 						const container = document.querySelector('#someId');
@@ -246,6 +287,7 @@
 					</code></pre>
         </section>
         <section>
+          <note>Javascript</note>
           <h3>DOM API - Create & Append</h3>
           <pre><code data-trim data-line-numbers="1|2|3|4">
 						const tasklist = document.createElement('ul');
@@ -255,6 +297,7 @@
 					</code></pre>
         </section>
         <section>
+          <note>Javascript</note>
           <h3>DOM API - Listening to events</h3>
           <pre><code data-trim>
       // listen to the click event on an element
@@ -262,43 +305,34 @@
 					</code></pre>
         </section>
         <section>
+          <note>Javascript</note>
           <h3>Add some interactivity to Exercise 1</h3>
           <div class="subtitle">
-            add an onsubmit event to your form<br />
-            & the following script to your html file:
+            Make the script part in ex1/index.html work
           </div>
-          <pre><code data-trim>
-          <!-- event.preventDefault is called to stop the default behaviour on form submission (POST to /) -->
-          <form onsubmit="addTodo(); event.preventDefault();"></form>
-          <script>
-            const todolist = ?('#todolist');
-            const todoInput = ?;
-
-            function addTodo(event) {
-              // create a new list item DOM element
-              const newListItem = ?;
-
-              // set the new list item's text
-              newListItem.textContent = todoInput.value;
-
-              // register the click event on a todo item
-              newListItem.?('click', toggleTodoItem);
-
-              // add the new list item DOM element to the todolist
-              todolist.appendChild(newListItem);
-
-              // clear the input
-              todoInput.value = '';
-            }
-
-            function toggleTodoItem(event) {
-              const todoItem = event.target;
-
-              // toggle (add/remove) the done class to the todo item
-              todoItem.classList.toggle('done');
-            }
-          </script>
-					</code></pre>
+          <ul class="js-ex-help-list">
+            <li>
+              Query selector api - Get a reference to a dom element -
+              document.querySelector('#elementId')
+            </li>
+            <li>
+              Create new element in code (without adding to the DOM) -
+              document.createElement('tagname');
+            </li>
+            <li>Get input text - inputElement.value</li>
+            <li>
+              Change element text content (list item text for ex.) -
+              element.textContent = 'some text'
+            </li>
+            <li>
+              DOM Event api - element.addEventListener('eventName',
+              handlerFunction)
+            </li>
+            <li>
+              Add an element to the dom -
+              parentElement.appendChild(childElement)
+            </li>
+          </ul>
         </section>
         <section>
           <h3>Live editable style</h3>
@@ -325,8 +359,8 @@
           <ul>
             <li>HTML tags and attributes</li>
             <li>Event listeners</li>
-            <li>Stylesheets</li>
-            <li>DOM api</li>
+            <li>CSS Stylesheets</li>
+            <li>DOM Javascript api</li>
           </ul>
         </section>
         <section>
