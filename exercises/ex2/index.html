@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ex 02</title>
+    <style>
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+        }
+
+        body>div {
+            margin-top: 30vh;
+        }
+
+        .done {
+            text-decoration: line-through;
+            color: gray;
+        }
+
+        #todolist li {
+            cursor: pointer;
+        }
+    </style>
+
+    <link rel="stylesheet" href="https://cdn.rawgit.com/kimeiga/bahunya/css/bahunya-0.1.3.css" />
+</head>
+
+<body>
+    <div id="app">
+        <form @submit.prevent>
+            <input v-model="value" />
+            <button @click="addTodo">Add Todo</button>
+            <!-- <button @click="clearDone">Clear Done</button> -->
+        </form>
+
+        <ul id="todolist">
+            <!-- make the list item repeat for each item in the todos array with v-for -->
+            <!-- set the done class if the todo.done is true - :class="{ 'done': ? }" -->
+            <li @click="toggleTodo(todo)">
+                <!-- replace Item 1 with an expressions that shows the todo's text {{ expression }} -->
+                Item 1
+            </li>
+        </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                value: '',
+                // set initial todos - [{ text: 'Item 1', done: false}, ...etc]
+                todos: []
+            },
+            methods: {
+                addTodo() {
+                    // add a todo with title as the current value and done set to false
+                    this.todos.push({
+                        title: this.value,
+                        done: false
+                    });
+
+                    // reset the value input to an empty string
+                    ? = '';
+                },
+                toggleTodo(todo) {
+                    // toggle the todo's done state
+                    todo.done = ?;
+                },
+                // add a clearDone method here that filters the this.todos array 
+                // and leaves only the todos are not done (todo.done is false)
+            }
+        });
+    </script>
+</body>
+
+</html>
