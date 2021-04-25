@@ -30,16 +30,23 @@
 <body>
     <div id="app">
         <form @submit.prevent>
-            <input v-model="value" />
+            <!-- Add v-model to this input -->
+            <input type="text" />
             <button @click="addTodo">Add Todo</button>
-            <!-- <button @click="clearDone">Clear Done</button> -->
+            <!-- Add clear done items button here -->
         </form>
 
         <ul id="todolist">
+            <!--
+                Example with v-for and v-bind:class -
+                <li v-for="item in items" :class="{ 'class-name': item.someField }">
+                    {{ item.otherField }}
+                </li>
+            -->
             <!-- make the list item repeat for each item in the todos array with v-for -->
-            <!-- set the done class if the todo.done is true - :class="{ 'done': ? }" -->
+            <!-- set the 'done' class with v-bind:class if the todo.done is true -->
             <li @click="toggleTodo(todo)">
-                <!-- replace Item 1 with an expressions that shows the todo's text {{ expression }} -->
+                <!-- replace Item 1 with an expressions that shows the todo's text -->
                 Item 1
             </li>
         </ul>

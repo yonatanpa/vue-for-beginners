@@ -71,10 +71,11 @@
           <li>Open Source with no corporate influence</li>
           <li>Designed from the ground up to be incrementally adoptable</li>
           <li>As performant if not more than other UI frameworks (React/Angular)</li>
+          <li>4th most starred project on github (182,035 ⭐)</li>
         </ul>
       </section>
       <section>
-        <note>Vue - app1</note>
+        <note>Vue</note>
         <h3>A Vue Instance</h3>
         <pre><code data-trim data-line-numbers>
 						const app1 = new Vue({
@@ -85,7 +86,7 @@
       });</code></pre>
       </section>
       <section>
-        <note>Vue</note>
+        <note>Vue - app1</note>
         <h3>Declerative Rendering</h3>
         <pre><code data-trim data-line-numbers>
 						<div id="app">
@@ -111,7 +112,7 @@
         </script>
       </section>
       <section>
-        <note>Vue - app2</note>
+        <note>Directives - app2</note>
         <h3>Directives</h3>
         <div class="subtitle">
           They are Vue specific methods that allow you to
@@ -144,7 +145,7 @@
         </script>
       </section>
       <section>
-        <note>Directives - app3</note>
+        <note>Loops - app3</note>
         <h3>v-for</h3>
         <div class="subtitle">
           v-for Allows us to render a list of items based on an array [or object]
@@ -172,7 +173,7 @@
         </script>
       </section>
       <section>
-        <note>Directives - app4</note>
+        <note>Binding - app4</note>
         <h3>v-bind</h3>
         <div class="subtitle">
           v-bind Allows us to manipulate HTML attributes with dynamic data
@@ -202,7 +203,7 @@
         </script>
       </section>
       <section>
-        <note>Directives - app5</note>
+        <note>Event Listeners - app5</note>
         <h3>v-on</h3>
         <div class="subtitle">
           v-on Allows us to attach JavaScript functions to
@@ -257,7 +258,7 @@
         </script>
       </section>
       <section>
-        <note>Directives - app6</note>
+        <note>2-Way Binding - app6</note>
         <h3>v-model</h3>
         <div class="subtitle">
           v-model Allows us to use two-way
@@ -298,10 +299,24 @@
         </script>
       </section>
       <section>
+        <h3>Exercise 01 - Todo app</h3>
+        <ol>
+          <li>Add v-model binding to the form input, bind to the value variable</li>
+          <li>Complete the missing v-for and :class bindings of the list item </li>
+          <li>Replace 'Item 1' with an {{ expression }} that shows the todo's title</li>
+          <li>Fix the addTodo & toggleTodo methods</li>
+          <li>You should now be able to add todo items</li>
+          <li>Add a clear done button <br /> &lt;button @click="clearDone"&gt;Clear Done&lt;/button&gt;</li>
+          <li>Add a clear done method (clearDone) to the Vue instance</li>
+        </ul>
+      </section>
+      <section>
         <h3>What we've learned</h3>
         <ul>
-          <li>Directives</li>
-          <li>Event listeners</li>
+          <li>The Vue Instance (el, data, methods)</li>
+          <li>Directives (v-if, v-for)</li>
+          <li>Binding (v-model, v-bind)</li>
+          <li>Event listeners (v-on)</li>
         </ul>
       </section>
       <section>
