@@ -35,7 +35,7 @@
             <button @click="clearDone">Clear Done</button>
         </form>
 
-        <ul id="todolist">
+        <ul>
             <li v-for="todo in todos" :class="{ 'done': todo.done }" @click="toggleTodo(todo)">
                 {{ todo.title }}
             </li>
