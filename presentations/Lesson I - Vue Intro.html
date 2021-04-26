@@ -82,6 +82,12 @@
         el: '#app',
         data: {
           message: 'Hello world!'
+        },
+        methods: {
+          reverse() {
+            // access data observables using 'this'
+            this.message = this.message.split('').reverse().join('');
+          }
         }
       });</code></pre>
       </section>
@@ -284,8 +290,8 @@
         <div id="app6">
           <input type="number" v-model="count" />
           <button @click="count++">Clicked {{ count }} times!</button> <br />
-          <input type="text" v-model="name" /> <br />
-          <span>Hello {{ name }}!</span> <br />
+          <input type="text" v-model="name" />
+          <span>Hello {{ name }}!</span>
           <button @click="name = 'world'">reset</button>
         </div>
         <script>
@@ -306,10 +312,50 @@
           <li>Replace 'Item 1' with an {{ expression }} that shows the todo's title</li>
           <li>Fix the addTodo & toggleTodo methods</li>
           <li>You should now be able to add todo items</li>
+        </ol>
+      </section>
+      <section>
+        <h3>Exercise 01.2 - Clear done todos</h3>
+        <ol>
           <li>Add a clear done button <br /> &lt;button @click="clearDone"&gt;Clear Done&lt;/button&gt;</li>
           <li>Add a clear done method (clearDone) to the Vue instance</li>
-        </ul>
+        </ol>
       </section>
+      <!-- <section>
+        <h3>Live editable style</h3>
+        <style id="app7" contenteditable="true" style="display: block; margin-bottom: 2em">
+          #app7 {
+            {{ style }}
+          }
+        </style>
+        <script>
+          app7 = new Vue({
+            el: '#app7',
+            data: {
+              style: `
+              color: green;
+              font-size: 0.8em;
+              transform: rotate(-3deg);
+            `
+            }
+          });
+        </script>
+        <pre><code data-trim data-line-numbers="1-5|7-12|1-12">
+              <style id="app7" contenteditable="true" style="display: block; margin-bottom: 2em">
+                #app7 {
+                  {{ style }}
+                }
+              </style>
+              &lt;script&gt;
+              app7 = new Vue({
+                el: '#app7',
+                data: {
+                  style: 'color: green;font-size: 0.8em;transform: rotate(-3deg);'
+                }
+              });
+              &lt;/script&gt;
+                </code></pre>
+      </section> -->
       <section>
         <h3>What we've learned</h3>
         <ul>
@@ -337,7 +383,7 @@
             <use xlink:href="#s-text" class="text"></use>
           </svg>
         </div>
-        <img src="images/patrick.gif" />
+        <img src="images/any-questions.jpeg" height="450" style="margin-top: -50px;" />
       </section>
     </div>
   </div>
