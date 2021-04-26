@@ -57,10 +57,9 @@
       <section>
         <h3>Why do we need a UI Framework?</h3>
         <ul>
-          <li>Build your UI as a component tree</li>
           <li>Binding - To events & observables</li>
-          <li>Performace - Components are compiled to simple render functions</li>
           <li>Huge community and ecosystem</li>
+          <li>Performace - Components are compiled to performant render functions</li>
           <li>Get started quickly (vue-cli, create react app)</li>
         </ul>
       </section>
@@ -79,8 +78,11 @@
         <h3>A Vue Instance</h3>
         <pre><code data-trim data-line-numbers>
 						const app1 = new Vue({
+        // #app is a selector for our Vue app container
         el: '#app',
         data: {
+          // message is an observable value
+          // and will update the UI when changed
           message: 'Hello world!'
         },
         methods: {
@@ -125,22 +127,24 @@
           accomplish common goals without worrying how it is
           implemented.
         </div>
-        <h5>v-if</h5>
-        <pre><code data-trim data-line-numbers>
+        <div class="fragment">
+          <h5>v-if</h5>
+          <pre><code data-trim data-line-numbers>
 						<div id="app">
         <p v-if="user === 'admin'">Admin Panel</p>
         <p v-else-if="user === 'user'">Homepage</p>
         &lt;p v-else&gt;Login&lt;/p&gt;
       </div>
         </code></pre>
-        <div id="app2">
-          <p v-if="user === 'admin'">Admin Panel</p>
-          <p v-else-if="user === 'user'">Homepage</p>
-          <p v-else>Login</p>
+          <div id="app2">
+            <p v-if="user === 'admin'">Admin Panel</p>
+            <p v-else-if="user === 'user'">Homepage</p>
+            <p v-else>Login</p>
+          </div>
+          <button onclick="app2.user = 'admin'">admin</button>
+          <button onclick="app2.user = 'user'">user</button>
+          <button onclick="app2.user = 'guest'">guest</button>
         </div>
-        <button onclick="app2.user = 'admin'">admin</button>
-        <button onclick="app2.user = 'user'">user</button>
-        <button onclick="app2.user = 'guest'">guest</button>
         <script>
           app2 = new Vue({
             el: '#app2',
