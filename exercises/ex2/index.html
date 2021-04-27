@@ -19,7 +19,7 @@
             color: gray;
         }
 
-        #todolist li {
+        ul li {
             cursor: pointer;
         }
     </style>
@@ -35,6 +35,9 @@
             <button @click="addTodo">Add Todo</button>
             <!-- Add clear done items button here (In step 2) -->
         </form>
+
+        <!-- Add v-if to show this div only when the list is empty (todos.length === 0) -->
+        <div>The todo list is empty.</div>
 
         <ul>
             <!--
