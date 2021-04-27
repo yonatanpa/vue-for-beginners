@@ -48,22 +48,24 @@
     <script>
         const app = new Vue({
             el: '#app',
-            data: {
-                value: '',
-                todos: [
-                    {
-                        title: 'Item 1',
-                        done: false
-                    },
-                    {
-                        title: 'Item 2',
-                        done: false
-                    },
-                    {
-                        title: 'Item 3',
-                        done: false
-                    }
-                ]
+            data() {
+                return {
+                    value: '',
+                    todos: [
+                        {
+                            title: 'Item 1',
+                            done: false
+                        },
+                        {
+                            title: 'Item 2',
+                            done: false
+                        },
+                        {
+                            title: 'Item 3',
+                            done: false
+                        }
+                    ]
+                };
             },
             methods: {
                 addTodo() {

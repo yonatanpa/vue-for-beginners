@@ -59,10 +59,12 @@
     <script>
         const app = new Vue({
             el: '#app',
-            data: {
-                value: '',
-                // set initial todos - [{ text: 'Item 1', done: false}, ...etc]
-                todos: []
+            data() {
+                return {
+                    value: '',
+                    // set initial todos - [{ text: 'Item 1', done: false}, ...etc]
+                    todos: []
+                };
             },
             methods: {
                 addTodo() {
