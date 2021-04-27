@@ -58,7 +58,7 @@
         <h3>Why do we need a UI Framework?</h3>
         <ul>
           <li>Binding - To events & observables</li>
-          <li>Performace - Components are compiled to performant render functions</li>
+          <li>Performace - Components are compiled to performant render functions (VDOM)</li>
           <li>Huge community and ecosystem</li>
           <li>Get started quickly (cdn, vue-cli, create react app)</li>
         </ul>
@@ -80,10 +80,11 @@
 						const app1 = new Vue({
         // #app is a selector for our Vue app container
         el: '#app',
-        data: {
+        // data is always a function that returns the initial state
+        data() {
           // message is an observable value
           // and will update the UI when changed
-          message: 'Hello world!'
+          return { message: 'Hello world!' };
         },
         methods: {
           reverse() {
@@ -100,24 +101,53 @@
 						<div id="app">
         <p>Message: {{ message }}</p>
         <p>12 x 12 = {{ 12 * 12 }}</p>
+        <p>0.1 + 0.2 != {{ 0.1 + 0.2 }}</p>
         <p>Message: {{ message ? message : 'Default Message' }}</p>
       </div>
         </code></pre>
         <div id="app1">
           <p>Message: {{ message }}</p>
           <p>12 x 12 = {{ 12 * 12 }}</p>
+          <p>0.1 + 0.2 != {{ 0.1 + 0.2 }}</p>
           <p>Message: {{ message ? message : 'Default Message' }}</p>
         </div>
-        <button onclick="app1.message ? app1.message = '' : app1.message = 'Hello world!'">Toggle Message</button>
+        <!-- <button onclick="app1.message ? app1.message = '' : app1.message = 'Hello world!'">Toggle Message</button> -->
         <div class="subtitle">To change the message variable,<br /> open the dev console and edit app1.message</div>
         <script>
           app1 = new Vue({
             el: '#app1',
-            data: {
-              message: 'Hello world!'
+            data() {
+              return { message: 'Hello world!' };
+            },
+            methods: {
+              reverse() {
+                this.message = this.message.split('').reverse().join('');
+              }
             }
           });
         </script>
+      </section>
+      <!-- <section>
+        <note>Vue</note>
+        <h3>Vue lifecycle</h3>
+        <div style="overflow-y: auto;height: 500px;">
+          <img src="images/vue-lifecycle.png" style="max-width: 98%; max-height: initial;" />
+        </div>
+      </section> -->
+      <section>
+        <note>Vue</note>
+        <h3>DOM & VDOM</h3>
+        <div class="subtitle">
+          Document Object Model - VNode vs Node
+        </div>
+        <pre><code data-trim data-line-numbers>
+          <div>
+            <h1>My title</h1>
+            Some text content
+            <!-- TODO: Add tagline -->
+          </div>
+        </code></pre>
+        <img src="images/vdom-tree.png" height="400px" style="margin: 0;" />
       </section>
       <section>
         <note>Directives - app2</note>
@@ -148,8 +178,8 @@
         <script>
           app2 = new Vue({
             el: '#app2',
-            data: {
-              user: ''
+            data() {
+              return { user: '' }
             }
           });
         </script>
@@ -176,8 +206,10 @@
         <script>
           app3 = new Vue({
             el: '#app3',
-            data: {
-              items: ['Item 1', 'Item 2', 'Item 3']
+            data() {
+              return {
+                items: ['Item 1', 'Item 2', 'Item 3']
+              };
             }
           });
         </script>
@@ -204,10 +236,12 @@
         <script>
           app4 = new Vue({
             el: '#app4',
-            data: {
-              tooltip: 'I\'m a tooltip',
-              url: '#',
-              glow: true
+            data() {
+              return {
+                tooltip: 'I\'m a tooltip',
+                url: '#',
+                glow: true
+              };
             }
           });
         </script>
@@ -219,12 +253,12 @@
           v-on Allows us to attach JavaScript functions to
           common events (click, change, submit, etc..)
         </div>
-        <pre><code data-trim data-line-numbers="2-8|11-23|1-24">
+        <pre><code data-trim data-line-numbers="2-8|11-25|1-26">
 						<div id="app">
         <button v-on:click="alert('clicked!'); clickCount++;">
           Clicked {{ clickCount }} times
         </button>
-        <button @click="alert('clicked!')" @mouseenter="enterCount++">
+        <button @mouseenter="enterCount++">
           Mouse entered {{ enterCount }} times
         </button>
         <button @click="reset">reset</button>
@@ -232,9 +266,11 @@
       &lt;script&gt;
       app5 = new Vue({
         el: '#app5',
-        data: {
-          clickCount: 0,
-          enterCount: 0
+        data() {
+          return {
+            clickCount: 0,
+            enterCount: 0
+          };
         },
         methods: {
           reset() {
@@ -247,15 +283,17 @@
         </code></pre>
         <div id="app5">
           <button v-on:click="alert('clicked!'); clickCount++;">Clicked {{ clickCount }} times</button>
-          <button @click="alert('clicked!')" @mouseenter="enterCount++">Mouse entered {{ enterCount }} times</button>
+          <button @mouseenter="enterCount++">Mouse entered {{ enterCount }} times</button>
           <button @click="reset">reset</button>
         </div>
         <script>
           app5 = new Vue({
             el: '#app5',
-            data: {
-              clickCount: 0,
-              enterCount: 0
+            data() {
+              return {
+                clickCount: 0,
+                enterCount: 0
+              };
             },
             methods: {
               alert: (msg) => window.alert(msg),
@@ -274,7 +312,7 @@
           v-model Allows us to use two-way
           data binding
         </div>
-        <pre><code data-trim data-line-numbers="2-3|4-6|9-14|1-15">
+        <pre><code data-trim data-line-numbers="2-3|4-6|9-17|1-18">
 						<div id="app">
         <input type="number" v-model="count" />
         <button @click="count++">Clicked {{ count }} times!</button>
@@ -285,9 +323,12 @@
       &lt;script&gt;
       app6 = new Vue({
         el: '#app6',
-        data: {
-          count: 0,
-          name: 'world'
+        data() {
+          return {
+            count: 0,
+            name: 'world'
+          };
+        }
       });
       &lt;/script&gt;
         </code></pre>
@@ -301,9 +342,11 @@
         <script>
           app6 = new Vue({
             el: '#app6',
-            data: {
-              count: 0,
-              name: 'world'
+            data() {
+              return {
+                count: 0,
+                name: 'world'
+              };
             }
           });
         </script>
@@ -319,47 +362,12 @@
         </ol>
       </section>
       <section>
-        <h3>Exercise 01.2 - Clear done todos</h3>
+        <h3>Exercise 01-b - Clear done todos</h3>
         <ol>
           <li>Add a clear done button <br /> &lt;button @click="clearDone"&gt;Clear Done&lt;/button&gt;</li>
           <li>Add a clear done method (clearDone) to the Vue instance</li>
         </ol>
       </section>
-      <!-- <section>
-        <h3>Live editable style</h3>
-        <style id="app7" contenteditable="true" style="display: block; margin-bottom: 2em">
-          #app7 {
-            {{ style }}
-          }
-        </style>
-        <script>
-          app7 = new Vue({
-            el: '#app7',
-            data: {
-              style: `
-              color: green;
-              font-size: 0.8em;
-              transform: rotate(-3deg);
-            `
-            }
-          });
-        </script>
-        <pre><code data-trim data-line-numbers="1-5|7-12|1-12">
-              <style id="app7" contenteditable="true" style="display: block; margin-bottom: 2em">
-                #app7 {
-                  {{ style }}
-                }
-              </style>
-              &lt;script&gt;
-              app7 = new Vue({
-                el: '#app7',
-                data: {
-                  style: 'color: green;font-size: 0.8em;transform: rotate(-3deg);'
-                }
-              });
-              &lt;/script&gt;
-                </code></pre>
-      </section> -->
       <section>
         <h3>What we've learned</h3>
         <ul>
@@ -367,6 +375,15 @@
           <li>Directives (v-if, v-for)</li>
           <li>Binding (v-model, v-bind)</li>
           <li>Event listeners (v-on)</li>
+        </ul>
+      </section>
+      <section>
+        <h3>What's next</h3>
+        <ul>
+          <li>Components & SFC</li>
+          <li>Lifecycle Hooks</li>
+          <li>Props & Slots</li>
+          <li>State management & Routing</li>
         </ul>
       </section>
       <section>
